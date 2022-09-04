@@ -46,14 +46,16 @@ export const User = ({
           <button onSubmit={handleOnEditSubmit}>Save</button>
         </form>
       ) : (
-        <div className="user">
-          <span className="nnn">{name}</span>
-          <span>{username}</span>
-          <span>{email}</span>
-          <span>{phone}</span>
-          <div>
-            <button onClick={handleEdit}>Edit</button>
-            <button onClick={handleDelete}>Delete</button>
+        <div>
+          <div className="user">
+            <span>{name}</span>
+            <span>{username}</span>
+            <span>{email}</span>
+            <span>{phone}</span>
+            <div>
+              <button onClick={handleEdit}>Edit</button>
+              <button onClick={handleDelete}>Delete</button>
+            </div>
           </div>
         </div>
       )}

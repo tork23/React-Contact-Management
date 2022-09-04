@@ -9,3 +9,22 @@
   align-items: center;
   margin: 1rem;
 }
+
+.userHeadings {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem;
+  margin-bottom: 2rem;
+}
+
+.user span {
+  width: 20vw;
+  text-align: left;
+}
+
+.userHeadings span {
+  width: 30vw;
+  text-align: left;
+  font-weight: 700;
+}

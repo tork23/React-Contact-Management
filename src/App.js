@@ -109,7 +109,12 @@ export default function App() {
       <h1>My Contacts</h1>
 
       <AddUser onAdd={onAdd} />
-
+      <div className="userHeadings">
+        <span>Name</span>
+        <span>Username</span>
+        <span>Email</span>
+        <span>Phone</span>
+      </div>
       {users.map((user) => (
         <User
           id={user.id}
