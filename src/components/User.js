@@ -1,22 +1,62 @@
-import React from 'react'
-import './user.css'
+import React, { useState } from "react";
 
-const User = ({id,email,name,onDelete}) => {
+export const User = ({
+  id,
+  name,
+  username,
+  email,
+  phone,
+  onEdit,
+  onDelete,
+}) => {
+  const [isEdit, setIsEdit] = useState(false);
 
-    const handleDelete = () => {
-        onDelete(id);
-    }
+  const handleEdit = () => {
+    setIsEdit(!isEdit);
+  };
 
-    return (
-        <div className='list'>
-            <span>{name}</span>
-            <span>{email}</span>
-            <span>
-                <button>edit</button>
-                <button onClick={handleDelete}>delete</button>
-            </span>
+  const handleDelete = () => {
+    onDelete(id);
+  };
+
+  const handleOnEditSubmit = (e) => {
+    e.preventDefault();
+    onEdit(
+      id,
+      e.target.name.value,
+      e.target.username.value,
+      e.target.email.value,
+      e.target.phone.value
+    );
+    setIsEdit(!isEdit);
+  };
+
+  return (
+    <div>
+      {isEdit ? (
+        <form className="user" onSubmit={handleOnEditSubmit}>
+          <input placeholder="Name" name="name" defaultValue={name} />
+          <input
+            placeholder="Username"
+            name="username"
+            defaultValue={username}
+          />
+          <input placeholder="Email" name="email" defaultValue={email} />
+          <input placeholder="Phone" name="phone" defaultValue={phone} />
+          <button onSubmit={handleOnEditSubmit}>Save</button>
+        </form>
+      ) : (
+        <div className="user">
+          <span className="nnn">{name}</span>
+          <span>{username}</span>
+          <span>{email}</span>
+          <span>{phone}</span>
+          <div>
+            <button onClick={handleEdit}>Edit</button>
+            <button onClick={handleDelete}>Delete</button>
+          </div>
         </div>
-    )
-}
-
-export default User
+      )}
+    </div>
+  );
+};
